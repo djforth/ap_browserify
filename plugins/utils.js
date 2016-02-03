@@ -1,5 +1,6 @@
 var _      = require("lodash")
   , config = require("./config")
+  , fs     = require("fs")
   , path   = require("path")
 
 

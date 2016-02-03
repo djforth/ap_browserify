@@ -20,7 +20,7 @@ var defaults = {
   , shared     : "common.js"
   , transforms : [
       ["babelify", {presets: ["es2015"]}]
-    ]}
+    ]
   , vendor     : "vendor.js"
 }
 

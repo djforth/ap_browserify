@@ -59,10 +59,10 @@ module.exports = function(files, minify){
     , build:function(factor){
       if(_.isUndefined(fileStream)) return;
       if(factor){
-        b.plugin("factor-bundle", { outputs:output() });
+        bundle.plugin("factor-bundle", { outputs:output() });
       }
 
-      bundleShare(b, fileStream);
+      bundleShare(bundle, fileStream);
     }
     , getBundle:function(){return bundle;}
     , setFileStream:function(name, server){

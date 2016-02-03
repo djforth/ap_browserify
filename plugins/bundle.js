@@ -4,9 +4,10 @@ var _       = require("lodash")
  , excludes = require("./exclude_bundle")
  , includes = require("./include_bundle");
 
-module.exports = function(name, minify, server){
+module.exports = function(minify, vendor, server){
   // watch  = watch || false;
-  var bundle = Base(config.files, minify)
+  var files = (vendor) ? [] : config.files
+  var bundle = Base(files, minify)
                 .addTransforms()
 
   var factor = false;

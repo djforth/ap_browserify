@@ -3,7 +3,7 @@ var _      = require("lodash")
 
 module.exports = function(b){
   if(!_.isEmpty(config.externals)){
-    _.forEach(config, function(ext){
+    _.forEach(config.externals, function(ext){
       b.external(ext);
     })
   }
