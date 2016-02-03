@@ -38,7 +38,11 @@ module.exports = function(files, minify){
   var uglify = (minify) ? Uglify(files) :  null;
 
   var bundle = browserify({entries:inputs, extensions:config.ext, debug:true, cache: {}, packageCache: {}})
-
+  if(!_.isEmpty(config.ignore)){
+    _.forEach(config.ignore, function(ig){
+      b.ignore(ig)
+    })
+  }
   var obj = {
     addTransforms:function(){
       _.forEach(config.transforms, function(t){

@@ -2,7 +2,7 @@ var _       = require("lodash")
  , Base     = require("./base")
  , config   = require("./config")
  , excludes = require("./exclude_bundle")
- , includes = require("./includes_bundle");
+ , includes = require("./include_bundle");
 
 module.exports = function(minify){
   watch  = watch || false;

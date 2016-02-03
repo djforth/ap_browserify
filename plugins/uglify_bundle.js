@@ -1,12 +1,12 @@
-var
-  , fs          = require('fs')
-  , UglifyJS    = require("uglify-js")
+var _        = require("lodash")
+  , fs       = require('fs')
+  , UglifyJS = require("uglify-js")
 
 
 
 function uglifyScript(file){
   var result = UglifyJS.minify(file,
-  { mangle: false
+  { mangle: false,
     compress: {
       sequences: true,
       dead_code: true,
