@@ -20,25 +20,21 @@ var defaults = {
   , transforms: {transform:"babelify", options:{presets: ["es2015"]}}
 }
 
+var pckage    = require(path.resolve("./package.json"));
 
+if(!_.isUndefined(pckage.assets)){
 
-if(!_.isUndefined(process.env.npm_package_assets)){
-
-  if(process.env.npm_package_assets.assets_in){
-    defaults = _.defaults(defaults, {input:path.join(process.env.npm_package_assets.assets_in, "javascripts")})
+  if(pckage.assets.assets_in){
+    defaults = _.defaults({input:path.join(pckage.assets.assets_in, "javascripts")}, defaults)
   }
 
-  if(process.env.npm_package_assets.assets_out){
-    defaults = _.defaults(defaults, {output:path.join(process.env.npm_package_assets.assets_out)});
+  if(pckage.assets.assets_out){
+    defaults = _.defaults({output:path.join(pckage.assets.assets_out)}, defaults);
   }
 
-  if(process.env.npm_package_assets.javascript){
-    var js_config = _.defaults(defaults,process.env.npm_package_assets.javascript);
+  if(pckage.assets.javascript){
+    var js_config = _.defaults(pckage.assets.javascript, defaults);
   }
 }
-
-
-
-console.log("FOOOOO >>>>", js_config)
 
 module.exports = js_config || defaults
