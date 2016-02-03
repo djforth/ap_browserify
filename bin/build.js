@@ -16,7 +16,7 @@ program
   .option('-v, --vendors', 'Vendor Bundle')
   .parse(process.argv);
 
-Bundle(program.minify)
+Bundle(program.minify, program.vendors)
    .setVendors(program.vendors)
    .setFactor(program.factorbundle)
    .build(program.watch)

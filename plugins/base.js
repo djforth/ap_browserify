@@ -76,7 +76,8 @@ module.exports = function(files, minify){
       if(_.isUndefined(fileStream)) return;
       var w = watcher(bundle, bundleShare);
       if(factor) w.addFactorBundle(output)
-      w.startWatching(fileStream)
+      w.startWatching(fileStream);
+      bundleShare(bundle, fileStream);
     }
 
   }
