@@ -28,26 +28,33 @@ function bundleShare(b, fileStream) {
 module.exports = function(files, minify){
   minify = minify || false;
 
-  var filestream;
+  var fileStream;
 
   var inputs = _.map(files, function(f){
     return inPaths(f);
   })
 
-  var output = utils.setOutputs(files, minify);
+  var output = utils.setOutpaths(files, minify);
   var uglify = (minify) ? Uglify(files) :  null;
 
   var bundle = browserify({entries:inputs, extensions:config.ext, debug:true, cache: {}, packageCache: {}})
   if(!_.isEmpty(config.ignore)){
     _.forEach(config.ignore, function(ig){
-      b.ignore(ig)
+      bundle.ignore(ig)
     })
   }
   var obj = {
     addTransforms:function(){
       _.forEach(config.transforms, function(t){
-        bundle.transform(t.transform, t.options);
+        if(_.isArray(t)){
+          bundle.transform(t[0], t[1]);
+        } else {
+          bundle.transform(t)
+        }
+
       })
+
+      return obj;
     }
     , build:function(factor){
       if(_.isUndefined(fileStream)) return;
@@ -59,7 +66,10 @@ module.exports = function(files, minify){
     }
     , getBundle:function(){return bundle;}
     , setFileStream:function(name, server){
-      fileStream = utils.writeFile(name, uglify, server);
+      if(_.isUndefined(fileStream)){
+        fileStream = utils.writeFile(name, uglify, server);
+      }
+
       return obj;
     }
     , watch:function(factor){

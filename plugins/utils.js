@@ -1,5 +1,6 @@
 var _      = require("lodash")
   , config = require("./config")
+  , path   = require("path")
 
 
 var outPaths = fileRegExp(config.ext, config.output);
@@ -20,7 +21,7 @@ module.exports = {
   , fileIn: function(input){
     var in_path= input;
     return function(file){
-      return path.join(in_path, file)
+      return path.resolve(path.join(in_path, file))
     }
   }
 

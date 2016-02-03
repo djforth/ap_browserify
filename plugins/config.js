@@ -10,14 +10,18 @@ function setPaths(key, def){
 }
 
 var defaults = {
-    ext       : ['.js', ".es6.js"]
-  , files     : ["components.es6.js"]
-  , externals : []
-  , input     : path.join("app", "assets_uncompiled", "javascripts")
-  , ignore    : []
-  , output    : path.join("app", "assets", "javascripts")
-  , shared    : "common.js"
-  , transforms: {transform:"babelify", options:{presets: ["es2015"]}}
+    ext        : ['.js', ".es6.js"]
+  , files      : ["components.es6.js"]
+  , externals  : []
+  , input      : path.join("app", "assets_uncompiled", "javascripts")
+  , ignore     : []
+  , output     : path.join("app", "assets", "javascripts")
+  , outputFile : "main.js"
+  , shared     : "common.js"
+  , transforms : [
+      ["babelify", {presets: ["es2015"]}]
+    ]}
+  , vendor     : "vendor.js"
 }
 
 var pckage    = require(path.resolve("./package.json"));
