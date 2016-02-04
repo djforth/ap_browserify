@@ -4,7 +4,8 @@ var _      = require("lodash")
 module.exports = function(b){
   if(!_.isEmpty(config.externals)){
     _.forEach(config.externals, function(ext){
-      b.external(ext);
+      var e = (ext.match(/:/)) ? ext.split(":")[1] : ext;
+      b.external(e);
     })
   }
 }
