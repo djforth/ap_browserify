@@ -7,6 +7,7 @@ var _       = require("lodash")
 module.exports = function(minify, input, server){
   // watch  = watch || false;
   var files = (_.isUndefined(input)) ? config.files : input;
+  files = (_.isArray(files)) ? files : [files];
 
   var bundle = Base(files, minify)
                 .addTransforms()
