@@ -28,6 +28,13 @@ module.exports = function(minify, input, server){
       if(factor) bundle.setFileStream(config.shared, server)
       return obj;
     }
+    , setOutput(output){
+      if(output){
+        bundle.setFileStream(output, server);
+      }
+
+       return obj;
+    }
     , setVendors:function(v){
       if(v){
         bundle.setFileStream(config.vendor, server)

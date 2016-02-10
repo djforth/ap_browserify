@@ -6,11 +6,12 @@ var _      = require("lodash")
  , program = require('commander');
 
 program
-  .version('0.0.1')
+  .version('0.1.0')
   .option('-e, --external <modules>', 'external modules', "externals", [])
   .option('-f, --factorbundle', "use factor bundle")
   .option('-m, --minify' , 'minify scripts')
   .option('-s, --input <name>', 'input file')
+  .option('-o, --output <name>', 'output file')
   .option('-i, --ignore', 'ignore <modules>', "ignore", [])
   .option('-r, --required', 'required <modules>', "required", [])
   .option('-w, --watch', 'Watch scripts')
@@ -28,6 +29,7 @@ if(program.input){
 
 
 Bundle(program.minify, files)
-   .setVendors(program.vendors)
-   .setFactor(program.factorbundle)
-   .build(program.watch)
+  .setOutput(program.output)
+  .setVendors(program.vendors)
+  .setFactor(program.factorbundle)
+  .build(program.watch)

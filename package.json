@@ -26,8 +26,9 @@
     "@djforth/ap_utils": "^1.0.0",
     "browserify": "^13.0.0",
     "commander": "^2.9.0",
+    "concat-stream": "^1.5.1",
     "factor-bundle": "^2.5.0",
-    "lodash": "^4.1.0",
+    "lodash": "^4.3.0",
     "uglify-js": "^2.6.1",
     "watchify": "^3.7.0"
   }
