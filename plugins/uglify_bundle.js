@@ -1,6 +1,7 @@
 var _        = require("lodash")
   , fs       = require('fs')
   , UglifyJS = require("uglify-js")
+  , utils       = require("./utils");
 
 
 
