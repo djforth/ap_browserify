@@ -1,3 +1,3 @@
-var Bundle  = require("../plugins/bundle");
+var Bundle  = require("./plugins/bundle");
 
 module.exports = Bundle;
