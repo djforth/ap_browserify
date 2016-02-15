@@ -1,6 +1,6 @@
 {
   "name": "@djforth/ap_browserify",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "Browserify plugin for asset_pipeline",
   "main": "index.js",
   "bin": {
