@@ -22,8 +22,18 @@
     "url": "https://github.com/djforth/ap_browserify/issues"
   },
   "homepage": "https://github.com/djforth/ap_browserify#readme",
-  "dependencies": {
-    "@djforth/ap_utils": "^1.0.0",
+  "devDependencies": {
+    "@djforth/ap_utils": "^1.1.0",
+    "browserify": "^13.0.0",
+    "commander": "^2.9.0",
+    "concat-stream": "^1.5.1",
+    "factor-bundle": "^2.5.0",
+    "lodash": "^4.3.0",
+    "uglify-js": "^2.6.1",
+    "watchify": "^3.7.0"
+  },
+  "peerDependencies": {
+    "@djforth/ap_utils": "^1.1.0",
     "browserify": "^13.0.0",
     "commander": "^2.9.0",
     "concat-stream": "^1.5.1",
