@@ -19,12 +19,7 @@ program
   .option('-v, --vendors', 'Vendor Bundle')
   .parse(process.argv);
 
-function build(files, program){
-  Bundle(program.minify, files)
-    .setVendors(program.vendors)
-    .setFactor(program.factorbundle)
-    .build(program.watch)
-}
+
 
 var files;
 if(program.input){
@@ -33,7 +28,7 @@ if(program.input){
   files = []
 }
 
-var options = ["external", "factor", "minify", "output", "required", "separate"]
+var options = ["external", "factorbundle", "minify", "output", "required", "separate"]
 
 options.forEach(function(op){
   if(!_.isEmpty(program[op]) || program[op]){
@@ -45,16 +40,16 @@ files =  files || config.get("files");
 
 if(program.separate){
   files.forEach(function(f){
-    Bundle(program.minify, f)
+    Bundle(config.get("minify"), f)
     .setOutput(f)
     .setVendors(program.vendors)
-    .setFactor(program.factorbundle)
+    .setFactor(config.get("factorbundle"))
     .build(program.watch)
   })
 } else {
-  Bundle(program.minify, files)
+  Bundle(config.get("minify"), files)
     .setVendors(program.vendors)
-    .setFactor(program.factorbundle)
+    .setFactor(config.get("factorbundle"))
     .build(program.watch)
 }
 

@@ -2,8 +2,6 @@ var _ = require("lodash")
   , utils  = require("@djforth/ap_utils").config
   , path        = require("path")
 
-
-
 var defaults = {
     ext        : ['.js', ".es6.js"]
   , files      : ["components.es6.js"]
@@ -11,11 +9,11 @@ var defaults = {
   , input      : path.resolve("app", "assets_uncompiled", "javascripts")
   , ignore     : []
   , minify     : false
-  , factor     : false
+  , factorbundle : false
   , output     : path.resolve("app", "assets", "javascripts")
   , outputFile : "main.js"
   , shared     : "common.js"
-  , seperate   : false
+  , separate   : false
   , required   : []
   , transforms : [
       ["babelify", {presets: ["es2015"]}]

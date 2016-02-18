@@ -1,7 +1,7 @@
 var Bundle = require("./bundle")
  , config = require("./config")
 
-function bundle(file){
+function bundle(file, bs){
     Bundle(false, file, bs())
       .setOutput(file)
       .setFactor(config.get("factor"))
@@ -14,6 +14,6 @@ module.exports = function(bs){
       bundle(file, bs)
     })
   } else {
-    bundle(config.get("files"), bs)
+    bundle(undefined, bs)
   }
 }
