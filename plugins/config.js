@@ -10,9 +10,12 @@ var defaults = {
   , externals  : []
   , input      : path.resolve("app", "assets_uncompiled", "javascripts")
   , ignore     : []
+  , minify     : false
+  , factor     : false
   , output     : path.resolve("app", "assets", "javascripts")
   , outputFile : "main.js"
   , shared     : "common.js"
+  , seperate   : false
   , required   : []
   , transforms : [
       ["babelify", {presets: ["es2015"]}]

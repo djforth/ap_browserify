@@ -33,7 +33,7 @@ if(program.input){
   files = []
 }
 
-var options = ["external", "output", "required"]
+var options = ["external", "factor", "minify", "output", "required", "separate"]
 
 options.forEach(function(op){
   if(!_.isEmpty(program[op]) || program[op]){
@@ -44,7 +44,6 @@ options.forEach(function(op){
 files =  files || config.get("files");
 
 if(program.separate){
-
   files.forEach(function(f){
     Bundle(program.minify, f)
     .setOutput(f)
