@@ -14,9 +14,17 @@ program
   .option('-o, --output <name>', 'output file')
   .option('-i, --ignore', 'ignore <modules>', "ignore", [])
   .option('-r, --required', 'required <modules>', "required", [])
+  .option('-x, --separate', 'compile file list into separate bundles')
   .option('-w, --watch', 'Watch scripts')
   .option('-v, --vendors', 'Vendor Bundle')
   .parse(process.argv);
+
+function build(files, program){
+  Bundle(program.minify, files)
+    .setVendors(program.vendors)
+    .setFactor(program.factorbundle)
+    .build(program.watch)
+}
 
 var files;
 if(program.input){
@@ -33,10 +41,24 @@ options.forEach(function(op){
   }
 });
 
+files =  files || config.get("files");
+
+if(program.separate){
+
+  files.forEach(function(f){
+    Bundle(program.minify, f)
+    .setOutput(f)
+    .setVendors(program.vendors)
+    .setFactor(program.factorbundle)
+    .build(program.watch)
+  })
+} else {
+  Bundle(program.minify, files)
+    .setVendors(program.vendors)
+    .setFactor(program.factorbundle)
+    .build(program.watch)
+}
 
 
 
-Bundle(program.minify, files)
-  .setVendors(program.vendors)
-  .setFactor(program.factorbundle)
-  .build(program.watch)
+
