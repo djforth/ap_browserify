@@ -1,6 +1,5 @@
 var watchify    = require("watchify");
 
-
 module.exports = function(b, bundleShare){
   var w = watchify(b);
 

@@ -2,12 +2,12 @@
 
 var _      = require("lodash")
  , Bundle  = require("../plugins/bundle")
- // , config  = require("../plugins/config")
+ , config  = require("../plugins/config")
  , program = require('commander');
 
 program
   .version('0.1.0')
-  .option('-e, --external <modules>', 'external modules', "externals", [])
+  .option('-e, --external <modules>', 'external modules', "externals")
   .option('-f, --factorbundle', "use factor bundle")
   .option('-m, --minify' , 'minify scripts')
   .option('-s, --input <name>', 'input file')
@@ -25,11 +25,18 @@ if(program.input){
   files = []
 }
 
+var options = ["external", "output", "required"]
+
+options.forEach(function(op){
+  if(!_.isEmpty(program[op]) || program[op]){
+    config.set(op, program[op])
+  }
+});
+
 
 
 
 Bundle(program.minify, files)
-  .setOutput(program.output)
   .setVendors(program.vendors)
   .setFactor(program.factorbundle)
   .build(program.watch)

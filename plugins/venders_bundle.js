@@ -1,6 +1,5 @@
 var _       = require("lodash")
  , Base     = require("./base")
- , config   = require("./config")
  , includes = require("./includes_bundle");
 
 module.exports = function(files, minify, watch, factor){

@@ -6,7 +6,7 @@ var _       = require("lodash")
 
 module.exports = function(minify, input, server){
   // watch  = watch || false;
-  var files = (_.isUndefined(input)) ? config.files : input;
+  var files = (_.isUndefined(input)) ? config.get("files") : input;
   files = (_.isArray(files)) ? files : [files];
 
   var bundle = Base(files, minify)
@@ -15,7 +15,7 @@ module.exports = function(minify, input, server){
   var factor = false;
   var obj = {
       build:function(watch){
-        bundle.setFileStream(config.outputFile, server)
+        bundle.setFileStream(config.get("outputFile"), server)
 
         if(watch){
           bundle.watch(factor)
@@ -25,7 +25,7 @@ module.exports = function(minify, input, server){
       }
     , setFactor(f){
       factor = f;
-      if(factor) bundle.setFileStream(config.shared, server)
+      if(factor) bundle.setFileStream(config.get("shared"), server)
       return obj;
     }
     , setOutput(output){
@@ -37,7 +37,7 @@ module.exports = function(minify, input, server){
     }
     , setVendors:function(v){
       if(v){
-        bundle.setFileStream(config.vendor, server)
+        bundle.setFileStream(config.get("vendor"), server)
         includes(bundle.getBundle());
       } else {
         excludes(bundle.getBundle());

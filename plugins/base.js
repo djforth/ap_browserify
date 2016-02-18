@@ -3,7 +3,6 @@ var _          = require("lodash")
  , config      = require("./config")
  , concat      = require("concat-stream")
  , es          = require("event-stream")
- , folder      = require("@djforth/ap_utils").folder_helpers
  , fs          = require("fs")
  , path        = require("path")
  , Uglify      = require("./uglify_bundle")
@@ -11,8 +10,8 @@ var _          = require("lodash")
  , watcher     = require("./watch_bundle")
 
 
-var inPaths  = utils.fileIn(config.input)
-var outPaths = utils.fileRegExp(config.ext, config.output);
+var inPaths  = utils.fileIn(config.get("input"))
+var outPaths = utils.fileRegExp(config.get("ext"), config.get("output"));
 
 function bundleShare(b, fileStream) {
   b.bundle()
@@ -37,15 +36,15 @@ module.exports = function(files, minify){
   var output = utils.setOutpaths(files, minify);
   var uglify = (minify) ? Uglify(files) :  null;
 
-  var bundle = browserify({entries:inputs, extensions:config.ext, debug:true, cache: {}, packageCache: {}})
-  if(!_.isEmpty(config.ignore)){
-    _.forEach(config.ignore, function(ig){
+  var bundle = browserify({entries:inputs, extensions:config.get("ext"), debug:true, cache: {}, packageCache: {}})
+  if(!_.isEmpty(config.get("ignore"))){
+    _.forEach(config.get("ignore"), function(ig){
       bundle.ignore(ig)
     })
   }
   var obj = {
     addTransforms:function(){
-      _.forEach(config.transforms, function(t){
+      _.forEach(config.get("transforms"), function(t){
         if(_.isArray(t)){
           bundle.transform(t[0], t[1]);
         } else {

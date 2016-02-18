@@ -4,7 +4,7 @@ var _      = require("lodash")
   , path   = require("path")
 
 
-var outPaths = fileRegExp(config.ext, config.output);
+var outPaths = fileRegExp(config.get("ext"), config.get("output"));
 
 function fileRegExp(exts_in, output, ext){
   ext = ext || ".js"
