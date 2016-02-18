@@ -1,6 +1,6 @@
-var Bundle  = require("./plugins/bundle");
 
 module.exports = {
-  bundle:require("./plugins/bundle")
-, config:require("./plugins/bundle")
+  browserSync : require("./plugins/browserSync_helper")
+, bundle      : require("./plugins/bundle")
+, config      : require("./plugins/config")
 }
