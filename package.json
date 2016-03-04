@@ -22,9 +22,14 @@
     "url": "https://github.com/djforth/ap_browserify/issues"
   },
   "homepage": "https://github.com/djforth/ap_browserify#readme",
-  "devDependencies": {},
+  "devDependencies": {
+    "chai": "^3.4.1",
+    "eslint": "^1.6.0",
+    "eslint-config-google": "^0.3.0",
+    "mocha": "^2.3.4"
+  },
   "dependencies": {
-    "@djforth/ap_utils": "^2.0.9",
+    "@djforth/ap_utils": "^2.0.10",
     "browserify": "^13.0.0",
     "commander": "^2.9.0",
     "concat-stream": "^1.5.1",
