@@ -11,7 +11,7 @@ program
   .option('-f, --factorbundle', "use factor bundle")
   .option('-m, --minify' , 'minify scripts')
   .option('-s, --input <name>', 'input file')
-  .option('-o, --output <name>', 'output file')
+  .option('-o, --outputFile <name>', 'output file')
   .option('-i, --ignore', 'ignore <modules>', "ignore", [])
   .option('-r, --required', 'required <modules>', "required", [])
   .option('-x, --separate', 'compile file list into separate bundles')
@@ -28,7 +28,7 @@ if(program.input){
   files = []
 }
 
-var options = ["external", "factorbundle", "minify", "output", "required", "separate"]
+var options = ["external", "factorbundle", "minify", "outputFile", "required", "separate"]
 
 options.forEach(function(op){
   if(!_.isEmpty(program[op]) || program[op]){
