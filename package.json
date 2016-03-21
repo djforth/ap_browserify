@@ -38,7 +38,7 @@
     "uglify-js": "^2.6.1",
     "watchify": "^3.7.0"
   },
-  "peerDependancy": {
+  "peerDependancies": {
     "@djforth/ap_utils": "^2.0.13"
   }
 }
