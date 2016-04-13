@@ -36,7 +36,8 @@
     "factor-bundle": "^2.5.0",
     "lodash": "^4.3.0",
     "uglify-js": "~2.6.2",
-    "watchify": "^3.7.0"
+    "watchify": "^3.7.0",
+    "which": "^1.2.4"
   },
   "peerDependancies": {
     "@djforth/ap_utils": "^2.0.13"
