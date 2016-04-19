@@ -17,15 +17,20 @@ program
   .option('-x, --separate', 'compile file list into separate bundles')
   .option('-w, --watch', 'Watch scripts')
   .option('-v, --vendors', 'Vendor Bundle')
+  .option('-p, --production', 'Set production')
   .parse(process.argv);
 
 
 
 var files;
-if(program.input){
+if (program.input){
   files = program.input;
 } else if(program.vendors) {
   files = []
+}
+
+if (program.production){
+   process.env.NODE_ENV = 'production';
 }
 
 var options = ["external", "factorbundle", "minify", "outputFile", "required", "separate"]
